@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Complete Computer & Web Fundamentals Masterclass — Zero to Confident</title>
+  <meta name="description" content="The definitive beginner-to-advanced guide to computer fundamentals, the internet, and web technologies. Master hardware, operating systems, shortcuts, networking, cybersecurity, websites, and SEO.">
+  
+  <!-- Clean, modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- High-legibility responsive stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Toggle Syllabus Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <a href="#" class="nav-brand" id="navBrandLink">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">LearnComputer</span>
+          <span class="nav-brand-sub">Computer & Web Masterclass</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <div class="nav-progress-widget">
+        <span>Progress:</span>
+        <div class="nav-progress-bar-bg">
+          <div class="nav-progress-bar-fill" id="navProgressBar"></div>
+        </div>
+        <span id="navProgressText">0/52 Lessons (0%)</span>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <!-- Dark/Light Theme Toggle -->
+      <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark/Light Mode" title="Toggle Dark/Light Mode">
+        <span id="themeToggleIcon">🌙</span>
+      </button>
+
+      <button class="btn-secondary" id="openJournalBtn" style="padding: 7px 14px; font-size: 0.85rem;" title="View Your Personal Study Journal & Notes">
+        <span>📓</span> My Notes
+      </button>
+
+      <button class="btn-secondary" id="openCheatSheetBtn" style="padding: 7px 14px; font-size: 0.85rem;" title="Open Quick Reference Cheat Sheet">
+        <span>📋</span> Cheat Sheet
+      </button>
+
+      <button class="student-badge-btn" id="studentBadgeBtn" title="Click to edit your certificate name">
+        <div class="avatar-circle">👤</div>
+        <span id="studentNameDisplay">Alex Rivera</span>
+        <span style="font-size: 0.75rem; color: var(--text-subtle);">✏️</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop Overlay -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- App Layout: Sidebar + Main Content -->
+  <div class="app-layout">
+    
+    <!-- Course Syllabus Sidebar -->
+    <aside class="sidebar" id="courseSidebar">
+      <div class="sidebar-header">
+        <div>
+          <div class="sidebar-title">Course Curriculum</div>
+          <div class="sidebar-desc" id="sidebarMetaDesc">12 Modules • 52 Lessons • 4 Months</div>
+        </div>
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Syllabus">✕</button>
+      </div>
+
+      <!-- Instant Search Filter -->
+      <div class="sidebar-search-container">
+        <input type="text" id="courseSearchInput" class="sidebar-search-input" placeholder="🔍 Search topics (e.g. RAM, Wi-Fi, HTML, SEO)...">
+      </div>
+
+      <!-- Phase / Month Filter Tabs -->
+      <div class="sidebar-phase-filter" id="sidebarPhaseFilter">
+        <button class="phase-filter-pill active" data-phase="all">All (4 Mo)</button>
+        <button class="phase-filter-pill" data-phase="1">Month 1</button>
+        <button class="phase-filter-pill" data-phase="2">Month 2</button>
+        <button class="phase-filter-pill" data-phase="3">Month 3</button>
+        <button class="phase-filter-pill" data-phase="4">Month 4</button>
+      </div>
+
+      <!-- Dynamically Rendered Module List -->
+      <ul class="module-list" id="moduleList">
+        <!-- Rendered dynamically by js/app.js -->
+      </ul>
+
+      <!-- Final Exam / Graduation Box -->
+      <div class="final-exam-sidebar-btn" id="sidebarFinalExamBtn">
+        <h5>🎓 Official Certification Exam</h5>
+        <p>25 Questions • 80% to graduate</p>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <div class="content-container" id="contentContainer">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Mobile Native Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <button class="mobile-nav-btn" id="mobileNavMenu">
+      <span>📚</span>
+      <span>Modules</span>
+    </button>
+    <button class="mobile-nav-btn" id="mobileNavSearch">
+      <span>🔍</span>
+      <span>Search</span>
+    </button>
+    <button class="mobile-nav-btn" id="mobileNavJournal">
+      <span>📓</span>
+      <span>Notes</span>
+    </button>
+    <button class="mobile-nav-btn" id="mobileNavCheatSheet">
+      <span>📋</span>
+      <span>Cheat Sheet</span>
+    </button>
+    <button class="mobile-nav-btn" id="mobileNavTheme">
+      <span id="mobileNavThemeIcon">🌙</span>
+      <span>Theme</span>
+    </button>
+    <button class="mobile-nav-btn" id="mobileNavExam">
+      <span>🎓</span>
+      <span>Exam</span>
+    </button>
+  </nav>
+
+  <!-- Student Name Customization Modal -->
+  <div class="modal-overlay" id="nameModal">
+    <div class="modal-card">
+      <h3 class="modal-title">Enter Your Full Name</h3>
+      <p class="modal-desc">Your name will appear proudly on your official Certificate of Completion when you pass the exam.</p>
+      <input type="text" id="nameModalInput" class="modal-input" placeholder="e.g. Jane Doe" maxlength="40">
+      <div class="modal-btn-row">
+        <button id="cancelNameBtn" class="btn-secondary">Cancel</button>
+        <button id="saveNameBtn" class="btn-primary">Save Name</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Reference Cheat Sheet Modal -->
+  <div class="modal-overlay" id="cheatSheetModal">
+    <div class="modal-card cheatsheet-modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 12px; margin-bottom: 16px;">
+        <h3 class="modal-title" style="margin: 0;">📋 Complete Computer & Web Cheat Sheet</h3>
+        <button id="closeCheatSheetBtn" class="btn-secondary" style="padding: 4px 10px; font-weight: 700;">✕</button>
+      </div>
+      
+      <p class="modal-desc">Instant reference guide to shortcuts, hardware, web technologies, and SEO:</p>
+
+      <div class="cheatsheet-grid">
+        <div style="background: var(--bg-surface-alt); padding: 14px; border-radius: var(--radius-md);">
+          <h5 style="color: var(--primary); margin-bottom: 8px;">Top Universal Shortcuts</h5>
+          <ul style="font-size: 0.85rem; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li><kbd>Ctrl+C</kbd> = Copy</li>
+            <li><kbd>Ctrl+V</kbd> = Paste</li>
+            <li><kbd>Ctrl+X</kbd> = Cut</li>
+            <li><kbd>Ctrl+Z</kbd> = Undo</li>
+            <li><kbd>Ctrl+S</kbd> = Save</li>
+            <li><kbd>Ctrl+F</kbd> = Find in page</li>
+            <li><kbd>Alt+Tab</kbd> = Switch open apps</li>
+            <li><kbd>Win+D</kbd> = Show desktop</li>
+            <li><kbd>Win+Shift+S</kbd> = Snipping screenshot</li>
+            <li><kbd>Win+V</kbd> = Clipboard history</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-surface-alt); padding: 14px; border-radius: var(--radius-md);">
+          <h5 style="color: var(--primary); margin-bottom: 8px;">Hardware at a Glance</h5>
+          <ul style="font-size: 0.85rem; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li><strong>CPU:</strong> The Brain (Calculations in GHz)</li>
+            <li><strong>RAM:</strong> The Desk (Temporary speed memory)</li>
+            <li><strong>SSD:</strong> The Filing Cabinet (Permanent NVMe)</li>
+            <li><strong>Motherboard:</strong> The Nervous System</li>
+            <li><strong>GPU:</strong> Calculates visual pixels & 3D gaming</li>
+            <li><strong>PSU:</strong> Converts AC wall power to DC electricity</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-surface-alt); padding: 14px; border-radius: var(--radius-md);">
+          <h5 style="color: var(--primary); margin-bottom: 8px;">Web Languages & Status Codes</h5>
+          <ul style="font-size: 0.85rem; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li><code>HTML</code> = The Skeleton (structure & tags)</li>
+            <li><code>CSS</code> = The Styling (colors, layouts, dark mode)</li>
+            <li><code>JavaScript</code> = The Brain (interactivity & logic)</li>
+            <li><code>200 OK</code> = Page loaded successfully</li>
+            <li><code>301</code> = Page moved permanently</li>
+            <li><code>404</code> = Page Not Found (Broken link)</li>
+            <li><code>500</code> = Server internal crash/error</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-surface-alt); padding: 14px; border-radius: var(--radius-md);">
+          <h5 style="color: var(--primary); margin-bottom: 8px;">SEO & Web Architecture</h5>
+          <ul style="font-size: 0.85rem; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li><strong>DNS A Record:</strong> Maps domain $\to$ IPv4</li>
+            <li><strong>CDN:</strong> Edge cache servers for global speed</li>
+            <li><strong>SEO:</strong> Crawl $\to$ Index $\to$ Rank algorithm</li>
+            <li><strong>Alt Text:</strong> Vital for blind screen readers & Google</li>
+            <li><strong>Mobile-First:</strong> Google ranks mobile version first</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <!-- Student Study Journal Modal -->
+  <div class="modal-overlay" id="journalModal">
+    <div class="modal-card journal-modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 12px; margin-bottom: 16px;">
+        <h3 class="modal-title" style="margin: 0;">📓 My Personal Study Journal & Notes</h3>
+        <button id="closeJournalBtn" class="btn-secondary" style="padding: 4px 10px; font-weight: 700;">✕</button>
+      </div>
+      <p class="modal-desc">All personal study reflections and notes you have written during your months of study:</p>
+      <div id="journalEntriesContainer" class="journal-entries-container">
+        <!-- Rendered dynamically -->
+      </div>
+      <div style="margin-top: 18px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+        <button id="copyAllNotesBtn" class="btn-secondary">📋 Copy All Notes</button>
+        <button id="printJournalBtn" class="btn-primary">🖨️ Print / Save as PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Box -->
+  <div class="toast-notice" id="toastNotice">
+    Notification message
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="js/courseData.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

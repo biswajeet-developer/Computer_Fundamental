@@ -1,0 +1,12 @@
+{
+  "name": "computer-course",
+  "version": "1.0.0",
+  "description": "Clean, beginner-friendly Computer Fundamentals course website",
+  "scripts": {
+    "start": "npx serve -l 3000 .",
+    "dev": "npx serve -l 3000 ."
+  },
+  "keywords": ["computer", "course", "education", "fundamentals"],
+  "author": "",
+  "license": "ISC"
+}
