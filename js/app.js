@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedPhase: "all", // 'all', '1', '2', '3', '4'
     completedLessons: JSON.parse(localStorage.getItem("cf_completed_lessons") || "[]"),
     quizScores: JSON.parse(localStorage.getItem("cf_quiz_scores") || "{}"),
-    studentName: localStorage.getItem("cf_student_name") || "Alex Rivera",
+    studentName: localStorage.getItem("cf_student_name") || "",
     finalExamPassed: localStorage.getItem("cf_final_exam_passed") === "true",
     certDate: localStorage.getItem("cf_cert_date") || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
     theme: localStorage.getItem("cf_theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
@@ -68,7 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("mobileNavTheme")?.addEventListener("click", toggleTheme);
   applyTheme(STATE.theme);
 
-  // 4. Helper: Toast Notification
+  // Prompt name modal on first visit if studentName is not set
+  if (!STATE.studentName) {
+    setTimeout(() => {
+      const nameModal = document.getElementById("nameModal");
+      const nameInput = document.getElementById("nameModalInput");
+      if (nameModal) {
+        nameModal.classList.add("open");
+        if (nameInput) nameInput.focus();
+      }
+    }, 600);
+  }
   function showToast(message) {
     if (!toastElement) return;
     toastElement.textContent = message;
@@ -125,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navProgressText.textContent = `${completed}/${total} Lessons (${percent}%)`;
     }
     if (studentNameDisplay) {
-      studentNameDisplay.textContent = STATE.studentName;
+      studentNameDisplay.textContent = STATE.studentName || "Student";
     }
 
     if (sidebarMetaDesc) {
