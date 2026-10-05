@@ -749,10 +749,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let result;
             try {
-              if (/^[\\d\\s\\+\\-\\*/\\(\\)\\.]+$/.test(val)) {
+              if (/^[\d\s\+\-\*\/\(\)\.]+$/.test(val)) {
                 result = Function(`'use strict'; return (${val})`)();
               } else {
-                result = val.toUpperCase() + " (Processed String)";
+                result = `"${val.toUpperCase()}" (Processed Text String)`;
               }
             } catch(e) {
               result = val;
