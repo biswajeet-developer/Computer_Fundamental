@@ -1967,7 +1967,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  function openJournal() {
+  function openJournal(e) {
+    if (e) e.preventDefault();
     if (!journalModal || !journalEntriesContainer) return;
 
     let entries = [];
@@ -2011,7 +2012,8 @@ document.addEventListener("DOMContentLoaded", () => {
     journalModal.classList.add("open");
   }
 
-  function closeJournal() {
+  function closeJournal(e) {
+    if (e) e.preventDefault();
     journalModal?.classList.remove("open");
   }
 
